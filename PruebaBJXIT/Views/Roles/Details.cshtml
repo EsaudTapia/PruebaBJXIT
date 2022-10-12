@@ -1,0 +1,34 @@
+﻿@model PruebaBJXIT.Models.Roles
+
+@{
+    ViewBag.Title = "Detalles rol";
+}
+
+<h2>Detalle del rol</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_matricula }) |
+    @Html.ActionLink("Regresar a inicio", "Index")
+</p>

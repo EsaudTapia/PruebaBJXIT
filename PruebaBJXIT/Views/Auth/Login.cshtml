@@ -1,0 +1,69 @@
+﻿@model  PruebaBJXIT.Models.Usuarios
+
+@{
+    Layout = null;
+    ViewBag.Title = "Login";
+}
+
+
+<link href="~/assets/css/Login.css" rel="stylesheet" />
+
+
+
+<div class="wrapper fadeInDown text-center">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        </div>
+
+
+
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "form form--login framed", ReturnUrl = ViewBag.ReturnUrl }))
+        {
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "fadeIn second", @placeholder = "Correo", @type = "email" } })
+
+            @Html.EditorFor(model => model.Contrasenia, new { htmlAttributes = new { @class = "fadeIn third", @placeholder = "Contraseña", @type = "password" } })
+
+            if (ViewBag.guardado != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show mt-2 mx-2" role="alert">
+                    <strong>Listo!, </strong> @ViewBag.guardado.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+
+            if (ViewBag.error != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show mt-2 mx-2" role="alert">
+                    <strong>Upss!, </strong> @ViewBag.error .
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            }
+            <input type="submit" class="fadeIn fourth" value="Log In">
+            <label for="toggle--signup" class="text  text--small text--centered"><b>@Html.ActionLink("Registrate", "Create", "Usuarios", null, htmlAttributes: new { @style = "color:white" })</b></label>
+
+
+        }
+
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+
+    </div>
+</div>
+
+
+

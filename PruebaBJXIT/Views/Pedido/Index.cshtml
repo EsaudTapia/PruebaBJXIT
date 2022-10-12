@@ -1,0 +1,68 @@
+﻿@model PruebaBJXIT.Models.ViewModel.PedidoViewModel
+@using PruebaBJXIT.Models;
+@{
+    ViewBag.Title = "Pedidos";
+
+}
+
+<h2>Pedidos</h2>
+@using (Html.BeginForm("Add", "Pedido", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-group">
+            @Html.LabelFor(d => d.Cliente)
+            @Html.DropDownList("Cliente", new SelectList(ViewBag.Clientes, "Id", "Nombre", "Selecione al cliente"), new { @Class = "form-control" });
+
+        </div>
+        <hr />
+        <div class="form-group mt-1">
+            Producto
+            @Html.DropDownList("idProducto", new SelectList(ViewBag.productos, "Id", "Descripcion", "Selecione al producto"), new { @Class = "form-control" })
+            Cantidad
+            <input type="number" class="form-control" id="Cantidad" />
+            <h6 id="alertCantidad" class="text-danger"></h6>
+            Precio
+            <input type="number" class="form-control" disabled id="Precio" />
+            <input value="Agregar" type="button" onclick="AgregarConcepto(); return false;" />
+        </div>
+
+        <div class="row">
+
+
+
+
+        </div>
+    </div>
+
+    <div id="divConceptos">
+        <table class="table table-hover"  id="tbConcepto">
+            <thead>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>IdProducto</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+
+        
+
+
+
+    </div>
+
+
+    <div class="form-group mx-5 text-center">
+
+        <input type="submit" />
+    </div>
+
+}
+
+<script src="~/assets/js/conceptos.js"></script>
+
